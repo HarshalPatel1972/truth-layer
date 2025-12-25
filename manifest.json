@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Truth Layer",
+  "version": "1.0",
+  "description": "See Reddit discussions for the current page in your side panel.",
+  "permissions": [
+    "sidePanel",
+    "tabs",
+    "activeTab"
+  ],
+  "side_panel": {
+    "default_path": "panel.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open Truth Layer"
+  }
+}

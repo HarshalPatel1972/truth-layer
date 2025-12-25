@@ -1,0 +1,211 @@
+/* CSS variables and basic reset */
+:root {
+  --bg-color: #030303; /* Deep Dark */
+  --header-bg: #121212;
+  --card-bg: #1a1a1b;
+  --card-hover: #29292b;
+  --text-main: #e8e8e8;
+  --text-muted: #818384;
+  --accent: #FF4500; /* Reddit Orange */
+  --border: #343536;
+  --radius: 8px;
+  --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 13px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-size: var(--font-size-base);
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+/* Header */
+.status-header {
+  padding: 14px 16px;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+#status-text {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* Results Container */
+.results-container {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: calc(100vh - 60px);
+}
+
+/* Thread Card */
+.thread-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.thread-card:hover {
+  background-color: var(--card-hover);
+  border-color: #4a4b4d;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.thread-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.subreddit {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.thread-body {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+}
+
+.thread-thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.thread-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-main);
+  line-height: 1.4;
+  /* Limit to 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Footer Stats */
+.thread-footer {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Message / Empty States */
+.message-card {
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+}
+
+.message-card.error {
+  color: #ff6b6b;
+  border-color: #fa5252;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.action-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: var(--card-hover);
+  color: var(--text-main);
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+  background-color: #3a3b3e;
+}
+
+.spinner {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 20px;
+}
